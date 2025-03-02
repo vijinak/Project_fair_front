@@ -3,7 +3,7 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
 import { Col, Row } from 'react-bootstrap'
-import { Link, navigate, useNavigate } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { loginApi, registerApi } from '../service/allApi'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -17,11 +17,11 @@ function Auth({register}) {
     password:""
   })
   console.log(userDetails);
-const navigate=useNavigate()
+const Navigate=useNavigate()
 
 
 //register
-/* const handleRegister = async()=>{
+const handleRegister = async()=>{
 
   const {username,email,password} =userDetails
   if(!username || !email || !password){
@@ -32,44 +32,15 @@ const navigate=useNavigate()
       console.log(result);
       if(result.status==200){
         toast.success('Resgistertion successfull')
-        navigate('/login')
+        Navigate('/login')
       }
-      
       else{
         toast.error('something went wrong.please try again later')
       }
   }
 
-} */
+}
 
-  const handleRegister = async () => {
-    const { username, email, password } = userDetails;
-
-    if (!username || !email || !password) {
-        toast.info('Please fill the form completely');
-        return;
-    }
-
-    try {
-        const result = await registerApi(userDetails);
-        console.log(result);
-
-        if (result.status === 200) {
-            toast.success('Registration successful');
-            navigate('/login');
-        } else {
-            toast.error('Something went wrong. Please try again later');
-        }
-    } catch (error) {
-        console.log(error);
-        
-        if (error.response && error.response.status === 406) {
-            toast.error('Account already exists. Please use a different email.');
-        } else {
-            toast.error('Something went wrong. Please try again later');
-        }
-    }
-};
 
 //login
 
@@ -91,7 +62,7 @@ const handleLogin = async() =>{
       password:""
     })
     setTimeout(()=>{
-      navigate('/')
+      Navigate('/')
     },2000)
     
 
