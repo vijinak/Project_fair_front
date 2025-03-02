@@ -34,6 +34,9 @@ const handleRegister = async()=>{
         toast.success('Resgistertion successfull')
         Navigate('/login')
       }
+      else if (result.response.status === 406) {
+        toast.error('Account already exists. Please use a different email.');
+    }
       else{
         toast.error('something went wrong.please try again later')
       }
