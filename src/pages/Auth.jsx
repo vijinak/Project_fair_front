@@ -3,7 +3,7 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
 import { Col, Row } from 'react-bootstrap'
-import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { Link, navigate, useNavigate } from 'react-router-dom'
 import { loginApi, registerApi } from '../service/allApi'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -17,7 +17,7 @@ function Auth({register}) {
     password:""
   })
   console.log(userDetails);
-const Navigate=useNavigate()
+const navigate=useNavigate()
 
 
 //register
@@ -56,7 +56,7 @@ const Navigate=useNavigate()
 
         if (result.status === 200) {
             toast.success('Registration successful');
-            Navigate('/login');
+            navigate('/login');
         } else {
             toast.error('Something went wrong. Please try again later');
         }
